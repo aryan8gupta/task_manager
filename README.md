@@ -1,3 +1,5 @@
+NOTE: The project demo video is present under static/TaskManagementApplication.mov.
+
 # Task Management Application
 
 Welcome to our Task Management Application! This application is built using Python, Django, MongoDB database, HTML, CSS, and JavaScript to provide a robust and efficient solution for managing tasks and projects.

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block contain %}
+    <!-- Hero section -->
+  <div class="hero" style="margin-left: 50px;">
+    {% if a == '' %}
+      <div class="row" style="margin-top: 100px;">
+        <div class="col">
+          <h1 class="heading"><b>Simplify your life</b></h1>
+          <h1 class="heading"><b>with Task <span style="color: #0dcaf0;">Manager</span></b></h1>
+          <p class="para1">Stay organized and efficient with our powerful task management application!
+          Streamline your tasks effortlessly with our intuitive management application. Boost productivity and stay on top of deadlines with ease.
+          Organize your tasks and teams with our intuitive platform.</p>
+          <a href="/signin/"><button class="mt-1">Get Started</button></a>
+        </div>
+        <div class="col">
+          <img src="../static/1.jpeg" style="border-radius: 30px; margin-right: 100px; height: 57vh; width: 45vw; position: relative; opacity: 1;" alt="error">
+        </div>
+      </div>
+    {% elif a == '1' %}
+      <div class="row" style="margin-top: 100px;">
+        <div class="col">
+          <h1 class="heading"><b>About Us</b></h1>
+          <p class="para1">Our mission is to revolutionize task management by providing innovative solutions that empower individuals and teams to achieve their goals efficiently. Founded on a commitment to user-centric design and cutting-edge technology, we strive to simplify complexities and enhance productivity in every workspace. Discover how our passion for efficiency and excellence drives us to continuously evolve and support your success.</p>
+        </div>
+        <div class="col">
+          <img src="../static/2.jpeg" style="border-radius: 30px; margin-right: 60px; margin-bottom: 20px; height: 54vh; width: 47vw; position: relative; opacity: 1;" alt="error">
+        </div>
+      </div>
+      <div class="row mt-3" >
+        <div class="col">
+          <img src="../static/3.jpeg" style="border-radius: 30px; margin-bottom: 20px; height: 64vh; width: 47vw; position: relative; opacity: 1;"" alt="error">
+        </div>
+        <div class="col mt-3" style="margin-left: 80px;">
+          <h1 class="heading"><b>Key Features</b></h1>
+          <ul class="para1" style="width: 38vw; font-size: 25px;">
+            <li>Task management with boards, lists, and cards.</li>
+            <li>Real-time collaboration, comments, and mentions for team communication.</li>
+            <li>Customizable workflows and integrations</li>
+            <li>Create unlimited boards for detailed project organization.</li>
+            <li>Generate detailed reports with insights into task progress and team productivity.</li>
+          </ul>
+        </div>
+      </div>
+    {% elif a == '2' %}
+      <div class="package" style="display: flex; justify-content: space-around; margin-top: 100px; ">
+        <div class="box1" style="background-color: lightblue; border: 2px solid blue; border-radius: 30px; width: 30vw; height: 75vh;">
+          <h1 class="heading" style="display: flex; justify-content: center; "> Standard</h1> 
+          <p class="para2"> ✓ Basic Task Management </p>
+          <p class="para2"> ✓ Limited Task Boards</p>
+          <p class="para2"> ✓ Basic Reporting </p>
+          <p class="para2"> ✗ Time Tracking</p>
+          <p class="para2"> ✗ Integration with Third-Party Apps</p>
+          <p class="para2"> ✗ Unlimited Access</p>
+          <h1 style="margin-left: 20px;"><b> ₹ 1000/month</b></h1>
+        </div>
+        <div class="box2" style="background-color: lightskyblue; border: 2px solid blue; border-radius: 30px; width: 30vw; height: 75vh;">
+          <h1 class="heading" style="display: flex; justify-content: center; "> Pro</h1> 
+          <p class="para2"> ✓ Advanced Task Tracking</p>
+          <p class="para2"> ✓ Unlimited Task Boards</p>
+          <p class="para2"> ✓ Priority Support</p>
+          <p class="para2"> ✓ Time Tracking</p>
+          <p class="para2"> ✓ Integration with Third-Party Apps </p>
+          <p class="para2"> ✓ Unlimited Access</p>
+          <h1 style="margin-left: 20px;"><b> ₹ 2000/month</b></h1>
+        </div>
+        <div class="box3" style="background-color: lightcyan; border: 2px solid blue; border-radius: 30px; width: 30vw; height: 75vh;">
+          <h1 class="heading" style="display: flex; justify-content: center; ">Premium</h1> 
+          <p class="para2"> ✓ All Features from Pro Plan</p>
+          <p class="para2"> ✓ Advanced Permissions</p>
+          <p class="para2"> ✓ Custom Workflows</p>
+          <p class="para2"> ✓ Priority Support</p>
+          <p class="para2"> ✓ Dedicated Account Manager</p>
+          <p class="para2"> ✓ Advanced Analytics</p>
+          <p class="para2"> ✓ Unlimited Access</p>
+          <h1 style="margin-left: 20px;"><b> ₹ 2200/month</b></h1>
+        </div>
+      </div>
+    {% elif a == '3' %}
+      <div class="container12" style="background-color: rgb(211, 220, 230); border: 2px solid blue; border-radius: 5px; margin-top: 40px; width: 60vw; height: 86vh; margin-left: 250px;">
+        <h1 class="heading" style="display: flex; justify-content: center;">Contact Form</h1>
+        <div class="contact mt-5" style=" display: flex; justify-content: center;  width: 50vw;  height: 70vh; margin-left: 90px;">
+          <form action="" name="contact_form" method="post" style="font-size: 25px; ">
+            {% csrf_token %} 
+              <div class="mb-5 row">
+                  <div class="col">
+                      <label>First Name</label>
+                      <input type="text" required maxlength="50" class="form-control" id="first_name" name="first_name" required>
+                  </div>
+                  <div class="col">
+                      <label>Last Name</label>
+                      <input type="text" required maxlength="50" class="form-control" id="last_name" name="last_name" required>
+                  </div>
+              </div>
+              <div class="mb-5 row">
+                  <div class="col">
+                      <label for="email_addr">Email address</label>
+                      <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
+                          placeholder="name@example.com" required>
+                  </div>
+                  <div class="col">
+                      <label for="phone_input">Phone</label>
+                      <input type="tel" required maxlength="50" class="form-control" id="phone" name="phone"
+                          placeholder="Phone" required>
+                  </div>
+                  <script>
+                    const phoneInputField = document.querySelector("#phone");
+                    const phoneInput = window.intlTelInput(phoneInputField, {
+                      utilsScript:
+                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    });
+                  </script>
+
+              </div>
+              <div class="mb-5">
+                  <label for="message">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" placeholder="{Optional}"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary px-4 btn-lg" style="margin-left: 170px;">Submit</button>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  
+
+{% endblock %}

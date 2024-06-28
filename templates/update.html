@@ -1,0 +1,57 @@
+{% extends 'base1.html' %}
+
+{% block contain %}
+
+<div style="margin-top: 100px; position: absolute; margin-left: 780px; display: flex; justify-content: center; align-items: center;"><h1 style="color: #0dcaf0;">Update Task</h1></div>
+    <div class="contain" style="margin-top: 180px; position: absolute; margin-left: 345px; display: flex; justify-content: center; align-items: center;">
+        <form class="row mx-3" action="" method="post" style="background-color: rgb(237, 227, 247); border: 2px solid blue; border-radius: 5px; height: 75vh; width: 30vw;">
+          {% csrf_token %}
+            <div class="col-12">
+              <label for="inputTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" value="{{data.title}}" required>
+            </div>
+            <div data-mdb-input-init class="col-12 w-100 mb-4">
+                <label class="form-label" for="textAreaExample5">Description</label>
+                <textarea class="form-control" id="textAreaExample5" name="description" rows="4" required>{{data.description}}</textarea>
+            </div>
+            <div class="col-12">
+              <label for="inputState" class="form-label">Status</label>
+              {% if data.pending %}
+                <select id="inputState" class="form-select" name="status" required>
+                  <option selected>Pending</option>
+                  <option>In Progress</option>
+                  <option>Completed</option>
+                </select>
+              {% elif data.in_progress %}
+                <select id="inputState" class="form-select" name="status" required>
+                  <option>Pending</option>
+                  <option selected>In Progress</option>
+                  <option>Completed</option>
+                </select>
+              {% elif data.completed %}
+                <select id="inputState" class="form-select" name="status" required>
+                  <option>Pending</option>
+                  <option>In Progress</option>
+                  <option selected>Completed</option>
+                </select>
+              {% endif %}
+
+            </div>
+            <div class="col-12">
+              <label for="inputDate" class="form-label">Set Date</label>
+              <input type="date" class="form-control" id="inputDate" value="{{data.date}}" name="date" required>
+            </div>
+            <div class="ro" style="display: flex;">
+                <div class="co" style="margin-left: 80px;">
+                  <a href="/read/"><button type="button" style="padding: 6px 10px 6px 10px; font-size: 20px; border-radius: 5px; background-color:  rgb(173, 130, 213); color: white;">Cancel</button></a>
+                </div>
+                <div class="co" style="margin-left: 20px;">
+                  <button type="submit" style="padding: 6px 10px 6px 10px; font-size: 20px; background-color: rgb(173, 130, 213); color: white; border-radius: 5px;">Save Changes</button>
+                </div>
+            </div>
+        </form>
+        <img src="../static/4.jpeg" style="height: 70vh; width: 45vw; margin-right: 10px; position: relative; opacity: 1;" alt="error">
+    </div>
+
+{% endblock %}
+  

@@ -1,0 +1,98 @@
+{% extends 'base1.html' %}
+
+{% block contain %}
+<style>
+.containe{
+  margin-top: 100px;
+  position: absolute;
+  margin-left: 780px;
+}
+.containe h1{
+  color: #0dcaf0;
+}
+.contain {
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  height: 80vh;
+  margin-top: 180px;
+  position: absolute;
+  margin-left: 345px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  display: flex;
+  float: left;
+  background-color: whitesmoke;
+  border: 2px solid blue;
+  border-radius: 5px;
+  height: 75vh;
+  width: 40vw;
+  top: 0%;
+  overflow: auto;
+}
+.status_button1 {
+  padding: 9px 15px 9px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: red;
+  border: 0px solid black;
+}
+.status_button2 {
+  padding: 9px 15px 9px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(221, 221, 15);
+  border: 0px solid black;
+}
+.status_button3 {
+  padding: 9px 15px 9px 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: lightgreen;
+  border: 0px solid black;
+}
+img {
+  display: flex;
+  height: 70vh;
+  width: 35vw;
+  opacity: 1;
+}
+</style>
+<div class="containe"><h1>Task Details</h1></div>
+    <div class="contain">
+        <form class="row mx-3" action="" method="post">
+            <div class="col-12">
+              <label for="inputTitle" class="form-label"><h5>Title</h5></label>
+              <p>{{data.title}}</p>
+            </div>
+            <div data-mdb-input-init class="col-12 w-100 mb-4">
+                <label class="form-label" for="textAreaExample5"><h5>Description</h5></label>
+                <p>{{data.description}}</p>
+            </div>
+            <div class="col-12">
+              <label for="inputState" class="form-label"><h5>Status</h5></label>
+              {% if data.pending %}
+              <h3><button class="status_button1">Pending</button></h3>
+
+              {% elif data.in_progress %}
+              <h3><button class="status_button2">In Progress</button></h3>
+
+              {% elif data.completed %}
+              <h3><button class="status_button3">Completed</button></h3>
+
+              {% endif %}
+            </div>
+            <div class="col-12">
+              <label for="inputDate" class="form-label"><h5>Due Date</h5></label>
+              <h4>{{data.date}}</h4>
+            </div>
+        </form>
+        <img src="../static/5.jpeg" alt="error">
+      </div>
+</div>
+
+{% endblock %}
+  

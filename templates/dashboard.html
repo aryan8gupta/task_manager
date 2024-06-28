@@ -1,0 +1,23 @@
+{% extends 'base1.html' %}
+
+{% block contain %}
+
+    <div class="contain" style=" margin-top: 150px; position: absolute; margin-left: 330px;">
+        <div class="cars" style="display: flex; flex-direction: row; border: 0px solid white;">
+            <div class="car" style="height: 22vh; margin-right: 25px; width: 24vw; border: 1px solid yellow; color: white; background-color: red; border-radius: 25px;">
+                <h1 class="card-subtitle mb-4 mt-3" style="display: flex; font-size: 50px; justify-content: center;">{{p}}</h1>
+                <h2 class="card-title mb-1" style="display: flex; justify-content: center;">Tasks Pending</h2>
+            </div>
+            <div class="car" style="height: 22vh; margin-right: 25px; width: 24vw; border: 1px solid black; color: white; background-color: rgb(221, 221, 15); border-radius: 25px;">
+                <h1 class="card-subtitle mb-4 mt-3" style="display: flex; font-size: 50px; justify-content: center;">{{q}}</h1>
+                <h2 class="card-title mb-1" style="display: flex; justify-content: center;">Tasks In Progress</h2>
+            </div>
+            <div class="car" style="height: 22vh; margin-right: 25px; width: 24vw; border: 1px solid yellow; color: white; background-color: lightgreen; border-radius: 25px;">
+                <h1 class="card-subtitle mb-4 mt-3" style="display: flex; font-size: 50px; justify-content: center;">{{r}}</h1>
+                <h2 class="card-title mb-1" style="display: flex; justify-content: center;">Tasks Completed</h2>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

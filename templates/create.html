@@ -1,0 +1,37 @@
+{% extends 'base1.html' %}
+
+{% block contain %}
+
+<div style="margin-top: 100px; position: absolute; margin-left: 780px; display: flex; justify-content: center; align-items: center;"><h1 style="color: #0dcaf0;">Add Tasks</h1></div>
+    <div class="contain" style="margin-top: 180px; position: absolute; margin-left: 345px; display: flex; justify-content: center; align-items: center;">
+        <form class="row mx-3" action="" method="post" style="background-color: aliceblue; border: 2px solid blue; border-radius: 5px; height: 75vh; width: 30vw;">
+          {% csrf_token %}
+            <div class="col-12">
+              <label for="inputTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div data-mdb-input-init class="col-12 w-100 mb-4">
+                <label class="form-label" for="textAreaExample5">Description</label>
+                <textarea class="form-control" id="textAreaExample5" name="description" rows="3" required></textarea>
+            </div>
+            <div class="col-12">
+              <label for="inputState" class="form-label">Status</label>
+              <select id="inputState" class="form-select" name="status" required>
+                <option selected>Pending</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="inputDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="inputDate" name="date" required>
+            </div>
+            <div class="col-12" style="margin-left: 160px;">
+              <button type="submit" style="padding: 6px 10px 6px 10px; font-size: 20px;" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+        <img src="../static/6.jpeg" style="height: 60vh; width: 40vw; margin-left: 20px; position: relative; opacity: 1; border-radius: 10px;" alt="error">
+    </div>
+
+{% endblock %}
+  

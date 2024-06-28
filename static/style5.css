@@ -1,0 +1,17 @@
+.navbar {
+    width: 100vw;
+    height: 10vh;
+    background-color: whitesmoke;
+    border: 2px solid black;
+}
+.tasks_box {
+    display: flex;
+    justify-content: center;
+    border: 5px solid blue;
+    background-color: whitesmoke;
+    color: #0dcaf0;
+    position: absolute; 
+    top: 0%; 
+    transform: translate(0%, 1%); 
+    overflow: auto;
+}

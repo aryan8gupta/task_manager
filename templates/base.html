@@ -13,14 +13,27 @@
 
     </head>
     <body>
+      <style>
+        img {
+          width: 4vw;
+          height: 6vh;
+          filter: brightness(1);
+        }
+        @media (min-width: 350px) and (max-width: 450px) {
+          img{
+            width: 6vw;
+            height: 6vh;
+          }
+        }
+      </style>
         <header>
             <nav class="navbar navbar-expand-lg" >
                 <div class="container-fluid ">
                   
-                  <div class="nav-container" id="navbarNav">
-                    <ul class="navbar_ul mt-1" >
+                  <div class="nav-containe" id="navbarNav">
+                    <ul class="navbar_u mt-1" >
                       <li class="nav_item">
-                        <img src="../static/logo.png" style="width: 4vw; height: 6vh; filter: brightness(1.6);" alt="error">
+                        <img src="../static/logo.png" alt="error">
                       </li>
                       <li class="nav_item1 mt-2">
                         <h4>TaskManager</h4>

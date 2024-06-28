@@ -13,8 +13,35 @@ DB = client['task_management']
 
 
 def home(request):
-    b = request.GET.get('q', '')
-    return render(request, "home.html", {'a': b})
+    if request.method == "POST":
+        fn = request.POST.get('first_name')
+        ln = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        msg = request.POST.get('message')
+        
+        # Mongodb -----------
+        record = {
+            'first_name': fn,
+            'last_name': ln,
+            'email': email,
+            'phone': phone,
+            'message': msg,
+        }
+        try:
+            
+            x = DB.marketingTeam.find_one({"email":email})
+            if not x:
+                DB.marketingTeam.insert_one(record)
+                return redirect("/inquiry/")
+            else:
+                raise Exception
+        except:
+            return HttpResponse("Already Registered")
+        
+    else:
+        b = request.GET.get('q', '')
+        return render(request, "home.html", {'a': b})
 
 
 def read(request):
@@ -225,4 +252,7 @@ def delete(request):
     a = request.GET.get('q', '')
     DB.tasks.delete_one({'_id': ObjectId(a)})
     return redirect("/dashboard/")
+
+def inquiry(request):
+    return render(request, 'inquiry.html')
 

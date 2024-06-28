@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
 
 {% block contain %}
-    <!-- Hero section -->
+  <style>
+    .col img{
+      border-radius: 30px;
+      margin-right: 100px;
+      height: 57vh;
+      width: 45vw;
+      position: relative;
+      opacity: 1;
+    }
+    @media (min-width: 350px) and (max-width: 450px) {
+      .col img{
+        opacity: 0;
+    }
+    }
+
+  </style>
   <div class="hero" style="margin-left: 50px;">
     {% if a == '' %}
       <div class="row" style="margin-top: 100px;">
@@ -14,7 +29,7 @@
           <a href="/signin/"><button class="mt-1">Get Started</button></a>
         </div>
         <div class="col">
-          <img src="../static/1.jpeg" style="border-radius: 30px; margin-right: 100px; height: 57vh; width: 45vw; position: relative; opacity: 1;" alt="error">
+          <img src="../static/1.jpeg" alt="error">
         </div>
       </div>
     {% elif a == '1' %}
@@ -29,11 +44,11 @@
       </div>
       <div class="row mt-3" >
         <div class="col">
-          <img src="../static/3.jpeg" style="border-radius: 30px; margin-bottom: 20px; height: 64vh; width: 47vw; position: relative; opacity: 1;"" alt="error">
+          <img src="../static/3.jpeg" style="border-radius: 30px; margin-bottom: 20px; height: 64vh; width: 47vw; position: relative; opacity: 1;" alt="error">
         </div>
-        <div class="col mt-3" style="margin-left: 80px;">
+        <div class="col mt-3">
           <h1 class="heading"><b>Key Features</b></h1>
-          <ul class="para1" style="width: 38vw; font-size: 25px;">
+          <ul class="para2">
             <li>Task management with boards, lists, and cards.</li>
             <li>Real-time collaboration, comments, and mentions for team communication.</li>
             <li>Customizable workflows and integrations</li>

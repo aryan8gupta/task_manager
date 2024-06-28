@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# task_manager
-This application helps you to manage your tasks. The Entire code is present in master branch.
-=======
 # Task Management Application
 
 Welcome to our Task Management Application! This application is built using Python, Django, MongoDB database, HTML, CSS, and JavaScript to provide a robust and efficient solution for managing tasks and projects.
@@ -38,7 +34,3 @@ Welcome to our Task Management Application! This application is built using Pyth
       python3 manage.py runserver
 
 5. Access the application at `http://localhost:8000`.
-
-
-
->>>>>>> master

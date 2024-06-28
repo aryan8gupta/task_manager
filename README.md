@@ -31,8 +31,10 @@ Welcome to our Task Management Application! This application is built using Pyth
 2. Install latest verion of Django.
   
 3. Install MongoDB. Ensure that MongoDB is running on localhost:27017.
+    i) Create a database named: "task_management"
+    ii) Create 3 collections inside the database namely:  "users", "tasks" and "contact"
    
-4. Run the development server using
+5. Run the development server using
       python3 manage.py runserver
 
-5. Access the application at `http://localhost:8000`.
+6. Access the application at `http://localhost:8000`.

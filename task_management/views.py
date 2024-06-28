@@ -30,9 +30,9 @@ def home(request):
         }
         try:
             
-            x = DB.marketingTeam.find_one({"email":email})
+            x = DB.contact.find_one({"email":email})
             if not x:
-                DB.marketingTeam.insert_one(record)
+                DB.contact.insert_one(record)
                 return redirect("/inquiry/")
             else:
                 raise Exception
@@ -45,27 +45,36 @@ def home(request):
 
 
 def read(request):
+    try:
+        if not b:
+            raise Exception
+        
+        data1 = DB.users.find_one({'email': b})
+        d = data1['_id']
+        data2 = DB.tasks.find({'user_id': d})
 
-    data1 = DB.users.find_one({'email': b})
-    d = data1['_id']
-    data2 = DB.tasks.find({'user_id': d})
-
-    datalist = []
-    for x in data2:
-        datalist.append(x)
-    for x in datalist:
-        DB.tasks.find_one_and_update({"_id": x['_id']}, {"$set":{"task_id": x['_id']}})
+        datalist = []
+        for x in data2:
+            datalist.append(x)
+        for x in datalist:
+            DB.tasks.find_one_and_update({"_id": x['_id']}, {"$set":{"task_id": x['_id']}})
 
 
-    data3 = DB.tasks.find({'user_id': d})
-    dlist = []
-    for x in data3:
-        dlist.append(x)
-    record = {
-        'data': dlist,
-    }
+        data3 = DB.tasks.find({'user_id': d})
+        dlist = []
+        for x in data3:
+            dlist.append(x)
+        record = {
+            'data': dlist,
+        }
 
-    return render(request, "read.html", record)
+        return render(request, "read.html", record)
+
+    except:
+        return redirect("/login/")
+        
+
+    
 
 def create(request):
     
@@ -97,6 +106,8 @@ def create(request):
             'date': date,
         }
         try:
+            if not b:
+                raise Exception
             data = DB.users.find_one({'email': b})
 
             record['user_id'] = data['_id']
@@ -105,21 +116,28 @@ def create(request):
            
         except:
             messages.warning(request, "Server Not Responding")
-            return redirect("/dashboard/")
+            return redirect("/login/")
     else:
         return render(request, "create.html")
 
 
 
 def detail(request):
-    a = request.GET.get('q', '')
-    data3 = DB.tasks.find_one({'_id': ObjectId(a)})
 
-    record = {
-        'data': data3,
-    }
+    try:
+        if not b:
+            raise Exception
+        a = request.GET.get('q', '')
+        data3 = DB.tasks.find_one({'_id': ObjectId(a)})
 
-    return render(request, "detail.html", record)
+        record = {
+            'data': data3,
+        }
+        return render(request, "detail.html", record)
+    
+    except:
+        return redirect("/login/")
+
 
 def signin(request):
     if request.method == "POST":
@@ -174,23 +192,28 @@ def login(request):
         return render(request, "log_in.html")
     
 def dashboard(request):
-    p = 0
-    q = 0
-    r = 0
+    try:
+        if not b:
+            raise Exception
+        p = 0
+        q = 0
+        r = 0
 
-    data1 = DB.users.find_one({'email': b})
-    d = data1['_id']
-    data2 = DB.tasks.find({'user_id': d})
+        data1 = DB.users.find_one({'email': b})
+        d = data1['_id']
+        data2 = DB.tasks.find({'user_id': d})
 
-    for x in data2:
-        if x['pending']:
-            p += 1
-        elif x['in_progress']:
-            q += 1
-        elif x['completed']:
-            r += 1
-    
-    return render(request, "dashboard.html", {'p': p, 'q': q, 'r': r})
+        for x in data2:
+            if x['pending']:
+                p += 1
+            elif x['in_progress']:
+                q += 1
+            elif x['completed']:
+                r += 1
+
+        return render(request, "dashboard.html", {'p': p, 'q': q, 'r': r})
+    except:
+        return redirect("/login/")
 
 def update(request):
     a = request.GET.get('q', '')
@@ -222,6 +245,8 @@ def update(request):
             'date': date,
         }
         try:
+            if not b:
+                raise Exception
             DB.tasks.find_one_and_update({'_id': ObjectId(a)}, {'$set': 
                 {
                 'title': title,
@@ -235,8 +260,7 @@ def update(request):
             return redirect("/dashboard/")
            
         except:
-            messages.warning(request, "Server Not Responding")
-            return redirect("/dashboard/")
+            return redirect("/login/")
     
     else:
         
@@ -249,9 +273,15 @@ def update(request):
 
 
 def delete(request):
-    a = request.GET.get('q', '')
-    DB.tasks.delete_one({'_id': ObjectId(a)})
-    return redirect("/dashboard/")
+    try:
+        if not b:
+            raise Exception
+        a = request.GET.get('q', '')
+        DB.tasks.delete_one({'_id': ObjectId(a)})
+        return redirect("/dashboard/")
+    except:
+        return redirect("/login/")
+    
 
 def inquiry(request):
     return render(request, 'inquiry.html')
